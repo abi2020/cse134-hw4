@@ -20,20 +20,84 @@
 	<nav>
 		<ul>
 			<li><a href="index.html">Home</a></li>
-			<li><a href="project.html">Projects</a></li>
+			<li><a href="experience.html">Experience</a></li>
 			<li><a href="contact.html">Contact Me</a></li>
 		</ul>
 	</nav>
 	
     <section>
         <h2>Contact Section</h2>
-	    <p>Phone Number: 123-456-7890</p>
+	    <p>I would love to set up a meeting with you!</p>
     </section>
+
+	<section>
+		<p>Preferred contact methods</p>
+		<ol>
+			<li>Email</li>
+			<li>Zoom Call</li>
+			<li>Phone Number</li>
+		</ol>
+	</section>
 	
-    <section>
-        <h2>Availability</h2>
-        <p>Weekdays</p>
-    </section>
+    <form>
+		<fieldset>
+			<legend>Contact Information</legend>
+			<label for="name">Name:</label>
+        	<input type="text" id="name" name="name" required>
+
+			<label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+		</fieldset>
+
+		<fieldset>
+			<legend>Inquiry</legend>
+			<label for="subject">Subject:</label>
+			<select id="subject" name="subject">
+				<option value="General Meeting">General Inquiry</option>
+				<option value="Job Update">Feedback</option>
+				<option value="Other">Other</option>
+			</select>
+
+			<label for="message">Message:</label>
+			<textarea id="message" name="message" rows="2" required></textarea>
+
+			<!-- <input type="submit" value="Submit"> -->
+			<button type="submit">Submit Form</button>
+		</fieldset>
+    </form>
+
+	<h2>What field do you work in?</h2>
+	<form>
+        <select name="fields">
+            <optgroup label="Engineering">
+                <option value="ds">Data Science</option>
+                <option value="me">Mechanical Engineering</option>
+                <option value="cs">Computer Science</option>
+            </optgroup>
+            <optgroup label="Social Science">
+                <option value="psych">Psychology</option>
+                <option value="econ">Economics</option>
+                <option value="hist">History</option>
+            </optgroup>
+        </select>
+    </form>
+
+	<h2>What is your favorite fruit?</h2>
+	<form>
+        <label for="fruit">Choose a fruit:</label>
+        <input list="fruits" id="fruit" name="fruit">
+        <datalist id="fruits">
+            <option value="Apple">
+            <option value="Watermelon">
+            <option value="Cherry">
+        </datalist>
+        <input type="submit" value="Submit">
+    </form>
+
+	<details>
+        <summary>Click for a fun fact.</summary>
+        <p>Snakes can predict earthquakes!</p>
+	</details>
 	
 </body>
 </html>

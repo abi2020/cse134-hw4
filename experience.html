@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="Simple demo portfolio page for CSE 134B" />
+	<meta name="keywords" content="HTML, CSS, JavaScript" />
+	<meta name="author" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CSE 134B Homework 1 Website</title>
+	<!-- <link href="images/favicon.ico" rel="icon" /> -->
+	<!-- <link href="styles/main.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <header>
+        <h1>Abishek Siva's Portfolio</h1>
+    </header>
+
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="experience.html">Experience</a></li>
+			<li><a href="contact.html">Contact Me</a></li>
+		</ul>
+	</nav>
+	
+    <div>
+        <h2>Experience Section</h2>
+	    <p>Some of my prior experience. Check it out!</p>
+    </div>
+
+	<section>
+		<canvas id="myCanvas" width="400" height="200" style="border: 1px solid black;"></canvas>
+
+		<!-- Chat GPT Code -->
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			var x = 50;  
+			function drawCircle() {
+				context.clearRect(0, 0, canvas.width, canvas.height);  
+				context.beginPath();
+				context.arc(x, 100, 20, 0, 2 * Math.PI);
+				context.fillStyle = "red";
+				context.fill();
+				x += 1;  
+				requestAnimationFrame(drawCircle); 
+			}
+			drawCircle();  
+		</script>
+	</section>
+
+	<section>
+		<svg width="100" height="100">
+			<circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="orange" />
+		</svg>
+	</section>
+
+	<section>
+		The first language I learned was Java:
+		<pre>
+			<code>
+			function helloWorld() {
+				System.out.println("Hello World!");
+			}
+			</code>
+		</pre>
+
+		<iframe src="https://en.wikipedia.org/wiki/Java_(programming_language)" width="500" height="300"></iframe>
+
+		<picture>
+			<source srcset="images/java-big.png" media="(min-width: 400px)">
+			<img src="images/java.png" width="200" height="300" alt="Description of the image">
+		  </picture>
+	</section>
+
+	<figure>
+        <figcaption>Sample Table with Caption and Figure</figcaption>
+        <table>
+            <caption>Comparing Different Programming Languages</caption>
+            <colgroup>
+                <col style="width: 40%;">
+                <col style="width: 40%;">
+                <col style="width: 40%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Java</th>
+                    <th>Python</th>
+                    <th>C++</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>System.out.println("Hi");</td>
+                    <td>print('Hi')</td>
+                    <td>cout << "Hi";</td>
+                </tr>
+                <tr>
+                    <td>Statically typed</td>
+                    <td>Dynamically typed</td>
+                    <td>Statically typed</td>
+                </tr>
+            </tbody>
+        </table>
+    </figure>
+	
+</body>
+</html>
