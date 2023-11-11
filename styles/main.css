@@ -1,3 +1,83 @@
 /* main.css */
 
-/* This is an empty CSS file. */
+:root {
+    --blue: #ADD8E6;
+    --white: #faf0e6;
+    --color1: color(display-p3 0.8 0.2 0.8);
+    --color2: color(display-p3 0.3 0.7 0.2);
+  }
+
+@font-face {
+    font-family: "Github Font";
+    src: url("https://mdn.github.io/css-examples/web-fonts/VeraSeBd.ttf");
+}
+  
+body { 
+    background-color: color-mix(in srgb, #34c9eb 25%, white);
+    font-family: 'CustomFont', Arial, sans-serif;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2rem;
+    padding: 1em;
+    margin: 5px;
+    height: 5dvh;
+}
+
+h2 { border-bottom: 2px solid var(--white, #0000); }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: #e74c3c;
+    animation: bounce 2s ease infinite;
+    transition: background-color 0.3s ease;
+    transform: rotate(45deg) scale(1.2);
+  }
+
+.box:hover {
+    background-color: #2ecc71;
+}
+
+h1:has(+ p) {
+    margin-bottom: 0;
+}
+
+/* Phones */
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+/* Tablets */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+/* Laptops */
+@media only screen and (min-width: 1025px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
