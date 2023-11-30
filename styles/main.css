@@ -5,6 +5,11 @@
     --white: #faf0e6;
     --color1: color(display-p3 0.8 0.2 0.8);
     --color2: color(display-p3 0.3 0.7 0.2);
+
+    --light-bg-color: #f4f4f4;
+    --light-text-color: #333;
+    --dark-bg-color: #333;
+    --dark-text-color: #fff;
   }
 
 @font-face {
@@ -13,8 +18,11 @@
 }
   
 body { 
-    background-color: color-mix(in srgb, #34c9eb 25%, white);
+    /* background-color: color-mix(in srgb, #34c9eb 25%, white); */
     font-family: 'CustomFont', Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
 }
 
 h1 {
@@ -80,4 +88,54 @@ h1:has(+ p) {
     p {
         font-size: 18px;
     }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+  
+label {
+    margin-bottom: 8px;
+  }
+  
+input,
+textarea {
+    margin-bottom: 16px;
+  }
+  
+output {
+    margin-top: 8px;
+    color: red; 
+  }
+
+input:user-invalid {
+    border: 2px solid red;
+  }
+  
+input:user-invalid + span::before {
+    content: "✖";
+    color: red;
+  }
+
+#info-output {
+    color: green; 
+  }
+
+  @keyframes flashAnimation {
+    0%, 50%, 100% {
+      background-color: #ff9999; /* Light red */
+      color: #333; /* Dark text color */
+    }
+    25%, 75% {
+      background-color: #ff4d4d; /* Darker red */
+      color: #fff; /* White text color */
+    }
+  }
+
+  
+.dark-mode {
+    background-color: black;
+    color: white;
 }

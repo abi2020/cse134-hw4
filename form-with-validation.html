@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form (With Validation)</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <button onclick="darkMode()">Toggle dark mode</button>
+
+    <header>
+        <h1>Abishek Siva's Portfolio</h1>
+
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="experience.html">Experience</a></li>
+				<li><a href="form-no-js.html">Contact Me (No JS)</a></li>
+				<li><a href="form-with-validation.html">Contact Me (With Validation)</a></li>
+			</ul>
+		</nav>
+    </header>
+
+  <form id="contactForm" action="https://httpbin.org/post" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="comments">Comments:</label>
+    <textarea id="comments" name="comments" rows="4" maxlength="100" required></textarea>
+
+    <input type="hidden" id="possible_bot" name="possible_bot" value="true">
+
+    <button type="submit">Submit</button>
+
+    <input type="hidden" id="form-errors" name="form-errors" value="">
+  </form>
+
+  <output id="error-output"></output>
+  <output id="info-output"></output>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const commentsTextarea = document.getElementById('comments');
+    const errorOutput = document.getElementById('error-output');
+    const infoOutput = document.getElementById('info-output');
+    const formErrors = [];
+
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        formErrors.push({ field: 'general', message: 'Form has errors.' });
+      }
+
+      const disallowedChars = /[^a-zA-Z0-9@._-]/;
+      validateField(nameInput, 'name', disallowedChars);
+      validateField(emailInput, 'email', disallowedChars);
+
+      validateComments();
+
+      document.getElementById('form-errors').value = JSON.stringify(formErrors);
+    });
+
+    function validateField(input, fieldName, disallowedChars) {
+      if (disallowedChars.test(input.value)) {
+        input.setCustomValidity(`Invalid characters in ${fieldName}.`);
+        formErrors.push({ field: fieldName, message: `Invalid characters in ${fieldName}.` });
+      } else {
+        input.setCustomValidity('');
+      }
+    }
+
+    function validateComments() {
+      const maxChars = 100;
+      const remainingChars = maxChars - commentsTextarea.value.length;
+
+      if (remainingChars < 0) {
+        commentsTextarea.setCustomValidity('Exceeded character limit.');
+        infoOutput.textContent = `Warning: Exceeded character limit (${remainingChars}).`;
+        formErrors.push({ field: 'comments', message: 'Exceeded character limit.' });
+      } else if (remainingChars <= 10) {
+        commentsTextarea.setCustomValidity('');
+        infoOutput.textContent = `Warning: ${remainingChars} characters remaining.`;
+      } else {
+        commentsTextarea.setCustomValidity('');
+        infoOutput.textContent = '';
+      }
+    }
+
+    function darkMode() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+ 
+  </script>
+
+</body>
+</html>
